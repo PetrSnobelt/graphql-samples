@@ -13,3 +13,18 @@ query{
 }
 ```
 
+## II. Query samples
+
+add more queryes: `sum` and `time`.
+Example of params, descriptions
+Multiple results in one query
+
+```
+query{
+  books {
+    author
+  }
+  sum(n1:1, n2:2)
+  time
+}
+```
