@@ -5,6 +5,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
 
 import {Rest} from '../components/rest-basic.js'
 import RestComponent from '../components/rest-component.js'
+import RestCompWithParams from '../components/rest-component-params.js'
 
 const stories = storiesOf('Storybook Knobs', module);
 
@@ -36,4 +37,9 @@ stories.add('basic rest', () => {
 
 stories.add('rest component', () => {
   return <RestComponent />
+})
+
+stories.add('rest with params', () => {
+  const personId = number('id', 2);
+  return <RestCompWithParams personId={personId}  />
 })

@@ -10,8 +10,17 @@ add `react-json-view`
 add `rest-basic.js` component  
 add story
 
-### III. react-apollo
+## III. react-apollo
 
 `npm i react-apollo fetch-headers`  
 add `rest-component.js`  
 add story
+
+## IV. react-with-params
+
+add `rest-component.js`  
+add story
+
+## V. codesandbox 
+
+see https://codesandbox.io/s/github/apollographql/apollo-link-rest/tree/master/examples/advanced
