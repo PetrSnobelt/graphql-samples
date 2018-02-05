@@ -29,7 +29,16 @@ async function StartServer() {
   new SubscriptionServer({
     execute,
     subscribe,
-    schema
+    schema,
+    onConnect: (connectionParams, webSocket) => {
+      const webSocketKey = webSocket.upgradeReq.headers['sec-websocket-key']
+      const ip = webSocket.upgradeReq.connection.remoteAddress
+      console.log('New WebSocket from', ip, webSocketKey)
+    },
+    onDisconnect: webSocket => {
+      const webSocketKey = webSocket.upgradeReq.headers['sec-websocket-key']
+      console.log('onDisconnect', webSocketKey)
+    }
   }, {
     server: server.listener,
     path: '/subscriptions',

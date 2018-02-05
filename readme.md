@@ -57,3 +57,9 @@ subscription {
 ```
 
 *and run mutation in first tab*
+
+### V. Add onConnect and onDisconnect
+
+add `onConnect` and `onDisconnect`
+start and stop subscriptions  
+see console
