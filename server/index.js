@@ -2,6 +2,10 @@ const Hapi = require('hapi');
 const { graphqlHapi } = require ('apollo-server-hapi');
 const { schema } = require('./schema.js')
 
+const { execute, subscribe } = require('graphql')
+const { createServer } = require('http');
+const { SubscriptionServer } = require('subscriptions-transport-ws');
+
 async function StartServer() {
   const server = new Hapi.server({
     host: 'localhost',
@@ -19,6 +23,16 @@ async function StartServer() {
         cors: true,
       },
     },
+  });
+
+  // subscriptions
+  new SubscriptionServer({
+    execute,
+    subscribe,
+    schema
+  }, {
+    server: server.listener,
+    path: '/subscriptions',
   });
 
   try {

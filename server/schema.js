@@ -1,4 +1,7 @@
+const { PubSub } = require('graphql-subscriptions')
 const { makeExecutableSchema } = require('graphql-tools');
+
+const pubsub = new PubSub()
 
 // Basic data
 const books = [
@@ -33,6 +36,10 @@ const books = [
       # example mutation
       sayHi(name:String!): String!
     }
+
+    type Subscription {
+      greeting: String!
+    }
   `;
 
   // The resolvers
@@ -46,7 +53,13 @@ const books = [
       sayHi:(_, {name}) => {
         console.log("Hi from client", name)
         const greeting = `Hi ${name}`
+        pubsub.publish('greeting', {greeting: greeting })
         return greeting
+      }
+    },
+    Subscription: {
+      greeting: {
+        subscribe: () => pubsub.asyncIterator('greeting')
       }
     }
   };
