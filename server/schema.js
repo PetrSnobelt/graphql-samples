@@ -28,6 +28,11 @@ const books = [
       #author of the book
       author: String
     }
+
+    type Mutation {
+      # example mutation
+      sayHi(name:String!): String!
+    }
   `;
 
   // The resolvers
@@ -36,6 +41,13 @@ const books = [
       books: () => books,
       sum: (_, {n1, n2}) => n1 + n2,
       time: () => (new Date).toISOString()
+    },
+    Mutation: {
+      sayHi:(_, {name}) => {
+        console.log("Hi from client", name)
+        const greeting = `Hi ${name}`
+        return greeting
+      }
     }
   };
 

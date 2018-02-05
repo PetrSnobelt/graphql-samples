@@ -28,3 +28,17 @@ query{
   time
 }
 ```
+
+### III. Sample mutation
+
+add subscription
+
+*run mutation*
+```
+mutation{
+  sayHi(name: "Mutation Sample")
+}
+```
+
+watch server console
+
