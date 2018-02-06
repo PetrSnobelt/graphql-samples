@@ -29,6 +29,24 @@ query{
 }
 ```
 
+another options to use multiple query in one request:
+
+```
+query queryName{
+  sum1: sum(n1:1, n2:10)
+  sum2: sum(n1:2, n2:20)
+}
+```
+
+query with params:
+set variable: `{"ten":10}`
+```
+query sumWithParams($ten:Int!) {
+  sum1: sum(n1:$ten, n2:1)
+  sum2: sum(n1:$ten, n2:10)
+}
+```
+
 ### III. Sample mutation
 
 add subscription
